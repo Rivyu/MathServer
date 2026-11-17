@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Churn Rate Calculator</title>
+    </head>
+    <body bgcolor="lightblue">
+        <h1>Rivyudhaa M(26001079)</h1>
+        <h2>Churn Rate</h2>
+        <form method="POST">
+            {%csrf_token%}<br><br>
+            <label>Final Customer:</label>
+            <input type="number"name="lost" value="{{l}}"><br><br>
+            <label>Initial Customer</label>
+            <input type="number" name="initial" value="{{i}}"><br><br>
+            <input type="submit"  value="Calculate"><br><br>
+            <label>Churn Rate</label>
+            <input type="number" name="churn_rate" value="{{churnrate}}"><br><br>
+        </form>
+    </body>
+</html>
