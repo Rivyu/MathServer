@@ -5,7 +5,7 @@ def churn_rate(request):
 
     churnrate = (l/i)*100 if request.method == "POST" else 0
 
-    print("Customerslost =", l)
+    print("FinalCustomers=", l)
     print("InitialCustomers =", i)
     print("ChurnRate =", churnrate)
 
