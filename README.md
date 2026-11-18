@@ -42,12 +42,65 @@ Render the result to the HTML template.
 Publish the website in Localhost.
 
 ## PROGRAM:
+```
+<html>
+    <head>
+        <title>Churn Rate Calculator</title>
+    </head>
+    <body bgcolor="lightblue">
+        <h1>Rivyudhaa M(26001079)</h1>
+        <h2>Churn Rate</h2>
+        <form method="POST">
+            {%csrf_token%}<br><br>
+            <label>Final Customer:</label>
+            <input type="number"name="lost" value="{{l}}"><br><br>
+            <label>Initial Customer</label>
+            <input type="number" name="initial" value="{{i}}"><br><br>
+            <input type="submit"  value="Calculate"><br><br>
+            <label>Churn Rate</label>
+            <input type="number" name="churn_rate" value="{{churnrate}}"><br><br>
+        </form>
+    </body>
+</html>
 
+views.py
+from django.shortcuts import render
+def churn_rate(request):
+    l = float(request.POST.get('lost', '0'))
+    i = float(request.POST.get('initial', '0'))
+
+    churnrate = (l/i)*100 if request.method == "POST" else 0
+
+    print("Customerslost =", l)
+    print("InitialCustomers =", i)
+    print("ChurnRate =", churnrate)
+
+    return render(
+        request,
+        'myapp/math.html',
+        {'l': l, 'i': i, 'churnrate': churnrate}
+    )
+
+urls.py
+from django.contrib import admin
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+    path('', views.churn_rate, name='churn_rate'),
+]
+
+```
 
 ## OUTPUT - SERVER SIDE:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d17c1f9f-98d6-4933-a65d-1d1e675cfa4a" />
+
+
 
 
 ## OUTPUT - WEBPAGE:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2cc66520-680a-4173-9ddf-4ad57e82ca85" />
+
 
 
 ## RESULT:
